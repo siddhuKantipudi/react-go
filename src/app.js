@@ -1,37 +1,49 @@
 
-var app = {
+const app = {
     title: "My first react project",
-    subtitle: "work hard play hard"
+    subtitle: "work hard play hard",
+    options: []
 }
 
-var template = (
-    <div>
-        <h1>{app.title}</h1>
-        <p>{app.subtitle}</p>
-        <ol>
-            <li>first item</li>
-            <li>second item</li>
-        </ol>
-    </div>
-);
+const onFormSubmit = (e) => {
+    e.preventDefault();
+    const option = e.target.elements.option.value;
+    if(option) {
+        app.options.push(option);
+        e.target.elements.option.value;
+    }
+    render();
 
-var userName = "Sid Kantipudi";
-var userAge = "26";
-var userLocation = "Maryville";
-
-var user = {
-    name: userName,
-    age: userAge,
-    location: userLocation
 }
 
+const onRemoveOptions = () => {
+    app.options = [];
+    render();
+}
 
-var template2 = (
-   <div>
-    <h1>{user.name}</h1>
-    <p>Age: {user.age}</p>
-    <p>Location: {user.location} </p>
-   </div>
-);
+const render = () => {
+    const template = (
+        <div>
+            <h1>{app.title}</h1>
+            {app.subtitle && <p>{app.subtitle}</p>}
+            <p>{(app.options && app.options.length > 0) ? "two options" : "no options" }</p>
+            <p>{app.options.length}</p>
+            <button onClick={onRemoveOptions}>Remove Options</button>
+            <ul>
+                <li>first option</li>
+                <li>second option</li>
+            </ul>
+            <form onSubmit={onFormSubmit}>
+                <input type="text" name="option"/>
+                <button>Add Option</button>
+                <button type="button" onClick={onRemoveOptions}>Remove Options</button>
+            </form>
+        </div>
+    );
+    ReactDOM.render(template, document.getElementById('app'));
+};
 
-ReactDOM.render(template, document.getElementById('app'));
+render();
+
+
+

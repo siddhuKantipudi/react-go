@@ -2,69 +2,85 @@
 
 var app = {
     title: "My first react project",
-    subtitle: "work hard play hard"
+    subtitle: "work hard play hard",
+    options: []
 };
 
-var template = React.createElement(
-    "div",
-    null,
-    React.createElement(
-        "h1",
-        null,
-        app.title
-    ),
-    React.createElement(
-        "p",
-        null,
-        app.subtitle
-    ),
-    React.createElement(
-        "ol",
+var onFormSubmit = function onFormSubmit(e) {
+    e.preventDefault();
+    var option = e.target.elements.option.value;
+    if (option) {
+        app.options.push(option);
+        e.target.elements.option.value;
+    }
+    render();
+};
+
+var onRemoveOptions = function onRemoveOptions() {
+    app.options = [];
+    render();
+};
+
+var render = function render() {
+    var template = React.createElement(
+        "div",
         null,
         React.createElement(
-            "li",
+            "h1",
             null,
-            "first item"
+            app.title
+        ),
+        app.subtitle && React.createElement(
+            "p",
+            null,
+            app.subtitle
         ),
         React.createElement(
-            "li",
+            "p",
             null,
-            "second item"
+            app.options && app.options.length > 0 ? "two options" : "no options"
+        ),
+        React.createElement(
+            "p",
+            null,
+            app.options.length
+        ),
+        React.createElement(
+            "button",
+            { onClick: onRemoveOptions },
+            "Remove Options"
+        ),
+        React.createElement(
+            "ul",
+            null,
+            React.createElement(
+                "li",
+                null,
+                "first option"
+            ),
+            React.createElement(
+                "li",
+                null,
+                "second option"
+            )
+        ),
+        React.createElement(
+            "form",
+            { onSubmit: onFormSubmit },
+            React.createElement("input", { type: "text", name: "option" }),
+            React.createElement(
+                "button",
+                null,
+                "Add Option"
+            ),
+            React.createElement(
+                "button",
+                { type: "button", onClick: onRemoveOptions },
+                "Remove Options"
+            )
         )
-    )
-);
-
-var userName = "Sid Kantipudi";
-var userAge = "26";
-var userLocation = "Maryville";
-
-var user = {
-    name: userName,
-    age: userAge,
-    location: userLocation
+    );
+    ReactDOM.render(template, document.getElementById('app'));
 };
 
-var template2 = React.createElement(
-    "div",
-    null,
-    React.createElement(
-        "h1",
-        null,
-        user.name
-    ),
-    React.createElement(
-        "p",
-        null,
-        "Age: ",
-        user.age
-    ),
-    React.createElement(
-        "p",
-        null,
-        "Location: ",
-        user.location,
-        " "
-    )
-);
-
-ReactDOM.render(template, document.getElementById('app'));
+render();
