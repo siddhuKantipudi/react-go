@@ -1,86 +1,119 @@
-"use strict";
+'use strict';
 
-var app = {
-    title: "My first react project",
-    subtitle: "work hard play hard",
-    options: []
-};
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var onFormSubmit = function onFormSubmit(e) {
-    e.preventDefault();
-    var option = e.target.elements.option.value;
-    if (option) {
-        app.options.push(option);
-        e.target.elements.option.value;
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Counter = function (_React$Component) {
+    _inherits(Counter, _React$Component);
+
+    function Counter(props) {
+        _classCallCheck(this, Counter);
+
+        var _this = _possibleConstructorReturn(this, (Counter.__proto__ || Object.getPrototypeOf(Counter)).call(this, props));
+
+        _this.increment = _this.increment.bind(_this);
+        _this.decrement = _this.decrement.bind(_this);
+        _this.reset = _this.reset.bind(_this);
+        _this.state = {
+            count: 0
+        };
+        return _this;
     }
-    render();
-};
 
-var onRemoveOptions = function onRemoveOptions() {
-    app.options = [];
-    render();
-};
+    _createClass(Counter, [{
+        key: 'increment',
+        value: function increment() {
+            this.setState(function (previousCount) {
+                return {
+                    count: previousCount.count + 1
+                };
+            });
+        }
+    }, {
+        key: 'decrement',
+        value: function decrement() {
+            this.setState(function (previousCount) {
+                return {
+                    count: previousCount.count - 1
+                };
+            });
+        }
+    }, {
+        key: 'reset',
+        value: function reset() {
+            this.setState(function () {
+                return {
+                    count: 0
+                };
+            });
+        }
+    }, {
+        key: 'render',
+        value: function render() {
+            return React.createElement(
+                'div',
+                null,
+                React.createElement(
+                    'h1',
+                    null,
+                    'Count: ',
+                    this.state.count
+                ),
+                React.createElement(
+                    'button',
+                    { onClick: this.increment },
+                    '+1'
+                ),
+                React.createElement(
+                    'button',
+                    { onClick: this.decrement },
+                    '-1'
+                ),
+                React.createElement(
+                    'button',
+                    { onClick: this.reset },
+                    'Reset'
+                )
+            );
+        }
+    }]);
 
-var render = function render() {
-    var template = React.createElement(
-        "div",
-        null,
-        React.createElement(
-            "h1",
-            null,
-            app.title
-        ),
-        app.subtitle && React.createElement(
-            "p",
-            null,
-            app.subtitle
-        ),
-        React.createElement(
-            "p",
-            null,
-            app.options && app.options.length > 0 ? "two options" : "no options"
-        ),
-        React.createElement(
-            "p",
-            null,
-            app.options.length
-        ),
-        React.createElement(
-            "button",
-            { onClick: onRemoveOptions },
-            "Remove Options"
-        ),
-        React.createElement(
-            "ul",
-            null,
-            React.createElement(
-                "li",
-                null,
-                "first option"
-            ),
-            React.createElement(
-                "li",
-                null,
-                "second option"
-            )
-        ),
-        React.createElement(
-            "form",
-            { onSubmit: onFormSubmit },
-            React.createElement("input", { type: "text", name: "option" }),
-            React.createElement(
-                "button",
-                null,
-                "Add Option"
-            ),
-            React.createElement(
-                "button",
-                { type: "button", onClick: onRemoveOptions },
-                "Remove Options"
-            )
-        )
-    );
-    ReactDOM.render(template, document.getElementById('app'));
-};
+    return Counter;
+}(React.Component);
 
-render();
+ReactDOM.render(React.createElement(Counter, null), document.getElementById('app'));
+// let count = 0;
+
+// const increment = () => {
+//     count++;
+//     renderCounterApp();
+// }
+// const decrement = () => {
+//     count--;
+//     renderCounterApp();
+// }
+
+// const reset = () => {
+//     count = 0;
+//     renderCounterApp();
+// }
+
+// const renderCounterApp = () => {
+//     const templateTwo = (
+//         <div>
+//             <h1>Count: {count}</h1>
+//             <button onClick={increment} >+1</button>
+//             <button onClick={decrement} >-1</button>
+//             <button onClick={reset} >Reset</button>
+//         </div>
+//     );
+
+//     ReactDOM.render(templateTwo, document.getElementById('app'));
+// }
+
+// renderCounterApp();

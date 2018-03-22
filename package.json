@@ -17,7 +17,9 @@
   "scripts": {
     "start": "live-server public",
     "babel-watch": "yarn babel src/app.js --out-file=public/scripts/app.js --presets=env,react --watch",
-    "babel-es6-watch": "yarn babel src/playground/es6-arrow-functions2.js --out-file=public/scripts/app.js --presets=env,react --watch"
+    "babel-watch-visibility" : "yarn babel src/playground/visible-toggle.js --out-file=public/scripts/app.js --presets=env,react --watch",
+    "babel-es6-watch": "yarn babel src/playground/es6-classes.js --out-file=public/scripts/app.js --presets=env,react --watch",
+    "header": "yarn babel src/components/Header.js --out-file=public/scripts/app.js --presets=env,react --watch"
   },
   "repository": "https://github.com/siddhuKantipudi/react-go.git",
   "license": "MIT"
