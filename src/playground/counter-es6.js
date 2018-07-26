@@ -1,3 +1,5 @@
+// setup defualt value to 0
+
 class Counter extends React.Component {
     constructor(props) {
         super(props);
@@ -5,7 +7,7 @@ class Counter extends React.Component {
         this.decrement = this.decrement.bind(this);
         this.reset = this.reset.bind(this);
         this.state = {
-            count: 0
+            count: props.count
         }
     }
     
@@ -26,7 +28,7 @@ class Counter extends React.Component {
     }
 
     reset() {
-        this.setState(() => {
+        this.setState(() =>{
             return {
                 count : 0
             }
@@ -45,34 +47,8 @@ class Counter extends React.Component {
     }
 }
 
-ReactDOM.render(<Counter />, document.getElementById('app'));
-// let count = 0;
+Counter.defaultProps = {
+    count : 0
+}
 
-// const increment = () => {
-//     count++;
-//     renderCounterApp();
-// }
-// const decrement = () => {
-//     count--;
-//     renderCounterApp();
-// }
-
-// const reset = () => {
-//     count = 0;
-//     renderCounterApp();
-// }
-
-// const renderCounterApp = () => {
-//     const templateTwo = (
-//         <div>
-//             <h1>Count: {count}</h1>
-//             <button onClick={increment} >+1</button>
-//             <button onClick={decrement} >-1</button>
-//             <button onClick={reset} >Reset</button>
-//         </div>
-//     );
-
-//     ReactDOM.render(templateTwo, document.getElementById('app'));
-// }
-
-// renderCounterApp();
+ReactDOM.render(<Counter count={5}/>, document.getElementById('app'));

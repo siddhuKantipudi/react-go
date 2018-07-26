@@ -13,7 +13,6 @@ const onFormSubmit = (e) => {
         e.target.elements.option.value;
     }
     render();
-
 }
 
 const showRandomOption = () => {
