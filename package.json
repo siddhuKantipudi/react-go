@@ -6,8 +6,7 @@
   "main": "index.js",
   "dependencies": {
     "babel-preset-env": "1.5.2",
-    "babel-preset-react": "6.24.1",
-    "live-server": "^1.2.0"
+    "babel-preset-react": "6.24.1"
   },
   "devDependencies": {
     "babel": "^6.23.0",
@@ -18,9 +17,9 @@
     "start": "live-server public",
     "app": "yarn babel src/app.js --out-file=public/scripts/app.js --presets=env,react --watch",
     "counter": "yarn babel src/playground/counter-es6.js --out-file=public/scripts/app.js --presets=env,react --watch",
-    "visibility" : "yarn babel src/playground/visible-toggle.js --out-file=public/scripts/app.js --presets=env,react --watch",
-    "classes-1" : "yarn babel src/playground/es6-classes-1.js --out-file=public/scripts/app.js --presets=env,react --watch",
-    "events" : "yarn babel src/playground/methos-events.js --out-file=public/scripts/app.js --presets=env,react --watch",
+    "visibility": "yarn babel src/playground/visible-toggle.js --out-file=public/scripts/app.js --presets=env,react --watch",
+    "classes-1": "yarn babel src/playground/es6-classes-1.js --out-file=public/scripts/app.js --presets=env,react --watch",
+    "events": "yarn babel src/playground/methos-events.js --out-file=public/scripts/app.js --presets=env,react --watch",
     "classes": "yarn babel src/playground/es6-classes.js --out-file=public/scripts/app.js --presets=env,react --watch",
     "components": "yarn babel src/playground/components.js --out-file=public/scripts/app.js --presets=env,react --watch"
   },
